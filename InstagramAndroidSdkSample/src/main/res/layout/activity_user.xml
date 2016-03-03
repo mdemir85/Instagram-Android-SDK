@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:padding="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/userImageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_user" />
+
+    <LinearLayout
+        android:id="@+id/userInfoLayout"
+        android:layout_toRightOf="@+id/userImageView"
+        android:layout_alignTop="@+id/userImageView"
+        android:layout_alignBottom="@+id/userImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/userFullnameTextView"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:textColor="#000000"
+        	android:textStyle="bold"
+        	android:textSize="17sp"
+        	android:text="-"/>
+
+        <TextView
+            android:id="@+id/userNameTextView"
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="@dimen/activity_vertical_margin"
+        	android:text="-"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/userInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+        android:layout_marginTop="@dimen/activity_vertical_margin" >
+	    
+	     <GridView
+             android:id="@+id/mediaGridView"
+             android:verticalSpacing="5dp"
+             android:horizontalSpacing="5dp"
+             android:padding="1dp"
+             android:stretchMode="columnWidth"
+             android:numColumns="3"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignParentTop="true"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentStart="true" />
+    
+	    <ProgressBar
+		    style="?android:attr/progressBarStyle"
+		    android:id="@+id/mediaProgressBar"
+		    android:layout_width="50dp"
+		    android:layout_height="50dp"
+		    android:layout_centerInParent="true"
+            android:indeterminate="false" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
