@@ -1,3 +1,27 @@
+/*******************************************************************************
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2016 Alexey <menliqw> Melnikov.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ ******************************************************************************/
+
 package com.melniqw.instagramsdk;
 
 import org.json.JSONArray;
@@ -27,32 +51,31 @@ public class Media implements Serializable {
     public Image image = null;
     public Video video = null;
 
-    @Override
-    public String toString() {
+    public String toXML() {
         StringBuilder builder = new StringBuilder();
         builder.append("<id>" + id + "</id>" + "\n");
         builder.append("<type>" + type + "</type>" + "\n");
         builder.append("<createdTime>" + createdTime + "</createdTime>" + "\n");
         builder.append("<attribution>" + (attribution == null ? "null" : attribution) + "</attribution>" + "\n");
-        builder.append("<image>" + (image == null ? "null" : image.toString()) + "</image>" + "\n");
-        builder.append("<video>" + (video == null ? "null" : video.toString()) + "</video>" + "\n");
+        builder.append("<image>" + (image == null ? "null" : image.toXML()) + "</image>" + "\n");
+        builder.append("<video>" + (video == null ? "null" : video.toXML()) + "</video>" + "\n");
         builder.append("<filter>" + filter + "</filter>" + "\n");
         builder.append("<link>" + link + "</link>" + "\n");
         builder.append("<userHasLiked>" + userHasLiked + "</userHasLiked>" + "\n");
-        builder.append("<user>" + (user == null ? "null" : user.toString()) + "</user>" + "\n");
-        builder.append("<caption>" + (caption == null ? "null" : caption.toString()) + "</location>" + "\n");
-        builder.append("<location>" + (location == null ? "null" : location.toString()) + "</location>" + "\n");
+        builder.append("<user>" + (user == null ? "null" : user.toXML()) + "</user>" + "\n");
+        builder.append("<caption>" + (caption == null ? "null" : caption.toXML()) + "</location>" + "\n");
+        builder.append("<location>" + (location == null ? "null" : location.toXML()) + "</location>" + "\n");
         for(String tag : tags) {
             builder.append("<tag>" + tag + "</tag>" + "\n");
         }
         for(UserInPhoto userInPhoto : usersInPhoto) {
-            builder.append("<userInPhoto>" + userInPhoto.toString() + "</userInPhoto>" + "\n");
+            builder.append("<userInPhoto>" + userInPhoto.toXML() + "</userInPhoto>" + "\n");
         }
         for(Like like : likes) {
-            builder.append("<like>" + like.toString() + "</like>" + "\n");
+            builder.append("<like>" + like.toXML() + "</like>" + "\n");
         }
         for(Comment comment : comments) {
-            builder.append("<comment>" + comment.toString() + "</comment>" + "\n");
+            builder.append("<comment>" + comment.toXML() + "</comment>" + "\n");
         }
         return builder.toString();
     }
